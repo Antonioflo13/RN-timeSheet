@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Center, Icon, Text, Pressable, HStack } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 const Footer = () => {
   const [selected, setSelected] = useState(1);
@@ -27,7 +27,10 @@ const Footer = () => {
           opacity={selected === 0 ? 1 : 0.5}
           py="3"
           flex={1}
-          onPress={() => setSelected(0)}
+          onPress={() => {
+            setSelected(0);
+            navigation.navigate("Badge");
+          }}
         >
           <Center>
             <Icon
@@ -47,7 +50,7 @@ const Footer = () => {
           flex={1}
           onPress={() => {
             setSelected(1);
-            navigation.navigate("Badge");
+            navigation.navigate("Meeting");
           }}
         >
           <Center>
@@ -66,7 +69,10 @@ const Footer = () => {
           opacity={selected === 2 ? 1 : 0.6}
           py="2"
           flex={1}
-          onPress={() => setSelected(2)}
+          onPress={() => {
+            setSelected(2);
+            navigation.navigate("Links");
+          }}
         >
           <Center>
             <Icon

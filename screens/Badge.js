@@ -1,9 +1,18 @@
 import React from "react";
-import { Box, Text, Icon, Progress } from "native-base";
+import { Box, Text, Icon, Progress, ScrollView } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 
 const Badge = (props) => {
   return (
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      onScroll={(e) =>
+        e.nativeEvent.contentOffset.y > 70
+          ? props.onHideFooter
+          : props.onShowFooter
+      }
+      scrollEventThrottle={16}
+    >
       <Box bg="secondary.50" p="12" height="100%">
         <Box pb="5">
           <Box
@@ -296,6 +305,7 @@ const Badge = (props) => {
           />
         </Box>
       </Box>
+    </ScrollView>
   );
 };
 

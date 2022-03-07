@@ -4,7 +4,7 @@ import { Animated } from "react-native";
 import { useFonts } from "expo-font";
 
 import { NavigationContainer } from "@react-navigation/native";
-import MyScreen from "./navigation/TimeSheetNavigation";
+import MyStack from "./navigation/MyStack";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -46,18 +46,10 @@ export default function App() {
     }).start();
 
   return (
-    <NavigationContainer>
-      <NativeBaseProvider theme={theme}>
-        <Header />
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          onScroll={(e) =>
-            e.nativeEvent.contentOffset.y > 70 ? hideFooter() : showFooter()
-          }
-          scrollEventThrottle={16}
-        >
-          <MyScreen />
-        </ScrollView>
+    <NativeBaseProvider theme={theme}>
+      <Header />
+      <NavigationContainer>
+        <MyStack />
         <Animated.View
           style={{
             transform: [{ translateY: translation }],
@@ -65,7 +57,7 @@ export default function App() {
         >
           <Footer />
         </Animated.View>
-      </NativeBaseProvider>
-    </NavigationContainer>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
