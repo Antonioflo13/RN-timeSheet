@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
-import { NativeBaseProvider, extendTheme, ScrollView } from "native-base";
-import { Animated } from "react-native";
+import { NativeBaseProvider, extendTheme } from "native-base";
 import { useFonts } from "expo-font";
+import Animated from "react-native-reanimated";
 
 import { NavigationContainer } from "@react-navigation/native";
+import 'react-native-gesture-handler';
 import MyStack from "./navigation/MyStack";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Footer from './components/Footer'
 
 const theme = extendTheme({
   colors: {
@@ -29,6 +29,7 @@ export default function App() {
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
   });
+
   const translation = useRef(new Animated.Value(0)).current;
 
   const hideFooter = () =>
@@ -47,16 +48,15 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={theme}>
-      <Header />
       <NavigationContainer>
         <MyStack />
         <Animated.View
-          style={{
-            transform: [{ translateY: translation }],
-          }}
-        >
-          <Footer />
-        </Animated.View>
+        style={{
+          transform: [{ translateY: translation }],
+        }}
+      >
+        <Footer />
+      </Animated.View>
       </NavigationContainer>
     </NativeBaseProvider>
   );

@@ -4,7 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const Footer = () => {
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState(0);
   const navigation = useNavigation();
   return (
     <Box
@@ -29,7 +29,7 @@ const Footer = () => {
           flex={1}
           onPress={() => {
             setSelected(0);
-            navigation.navigate("Badge");
+            navigation.navigate("Badges");
           }}
         >
           <Center>
